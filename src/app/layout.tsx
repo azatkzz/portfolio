@@ -17,8 +17,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Azat - Modeling Portfolio",
-  description: "Modeling portfolio of Azat based in Tokyo.",
+  title: "Azat | Growth",
+  description: "Azat's portfolio showcasing growth and achievements.",
+  icons: {
+    icon: "/front pics/1.jpeg",
+  },
 };
 
 export default function RootLayout({
