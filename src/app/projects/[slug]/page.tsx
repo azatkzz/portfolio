@@ -139,7 +139,7 @@ export default async function ProjectPage({
                   )}
                   
                   {/* Instagram Card in Sidebar */}
-                  {project.instagram && (
+                  {'instagram' in project && project.instagram && (
                     <div className="hidden md:block">
                       <InstagramCard profile={project.instagram} />
                     </div>
@@ -171,7 +171,7 @@ export default async function ProjectPage({
                   )}
                   
                   {/* Mobile Instagram Card */}
-                  {project.instagram && (
+                  {'instagram' in project && project.instagram && (
                     <div className="md:hidden">
                       <InstagramCard profile={project.instagram} />
                     </div>
