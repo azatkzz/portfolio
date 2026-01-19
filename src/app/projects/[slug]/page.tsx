@@ -4,7 +4,6 @@ import { notFound } from "next/navigation"
 import { projects } from "@/data/projects"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import * as motion from "framer-motion/client"
-import { InstagramCard } from "@/components/InstagramCard"
 import { clsx } from "clsx"
 
 export default async function ProjectPage({
@@ -138,12 +137,6 @@ export default async function ProjectPage({
                     </div>
                   )}
                   
-                  {/* Instagram Card in Sidebar */}
-                  {'instagram' in project && project.instagram && (
-                    <div className="hidden md:block">
-                      <InstagramCard profile={project.instagram} />
-                    </div>
-                  )}
               </div>
               <div className="col-span-1 md:col-span-2">
                   <div className="text-lg md:text-xl font-serif leading-relaxed text-zinc-800 mb-12 mt-12 space-y-4">
@@ -170,12 +163,6 @@ export default async function ProjectPage({
                     </div>
                   )}
                   
-                  {/* Mobile Instagram Card */}
-                  {'instagram' in project && project.instagram && (
-                    <div className="md:hidden">
-                      <InstagramCard profile={project.instagram} />
-                    </div>
-                  )}
               </div>
           </div>
 
