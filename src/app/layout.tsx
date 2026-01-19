@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Azat | Growth",
   description: "Growth engineer, GTM adn marketing specialsit for startups",
   icons: {
-    icon: "/front pics/1.jpeg",
+    icon: "/icon.jpeg",
   },
 };
 
