@@ -18,7 +18,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Azat | Growth",
-  description: "Azat's portfolio showcasing growth and achievements.",
+  description: "Growth engineer, GTM adn marketing specialsit for startups",
   icons: {
     icon: "/front pics/1.jpeg",
   },
