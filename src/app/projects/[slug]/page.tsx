@@ -19,8 +19,6 @@ export default async function ProjectPage({
     notFound()
   }
 
-  const hasCustomGrid = project.images.some(img => typeof img === 'object');
-
   // Determine Next and Previous Projects
   const nextProject = projects[(projectIndex + 1) % projects.length]
   const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length]
@@ -165,72 +163,6 @@ export default async function ProjectPage({
                   
               </div>
           </div>
-
-          {/* Gallery - Only show for non-Experience projects */}
-          {project.category !== "Experience" && (
-            hasCustomGrid ? (
-               /* Bento Grid Layout for Mixed Sizes - Vertical Focus */
-               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
-                  {project.images.map((imgData, idx) => {
-                     const src = typeof imgData === 'string' ? imgData : imgData.src;
-                     const className = typeof imgData === 'object' ? imgData.className : '';
-                     
-                     return (
-                        <motion.div 
-                          key={idx}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: idx * 0.1 }}
-                          className={clsx("relative rounded-lg overflow-hidden group", className, 
-                            // Default to span 1 col
-                            !className.includes('col-span') && "col-span-1",
-                            // Allow row-span items to stretch naturally to cover their grid area
-                            className.includes('row-span') && "h-full min-h-[400px]",
-                            // Allow regular items to have auto height, but apply h-full to the second item in the Smoking Astana grid to match edges
-                            !className.includes('row-span') && (idx === 1 && project.slug === 'smoking-astana' ? "h-full" : "aspect-auto h-auto")
-                          )}
-                        >
-                            <Image
-                                src={src}
-                                alt={`${project.title} - ${idx + 1}`}
-                                width={800}
-                                height={1200}
-                                className={clsx(
-                                  "w-full group-hover:scale-105 transition-transform duration-700",
-                                  // If it's the specific case where we force h-full, we need object-cover to fill it
-                                  (className.includes('row-span') || (idx === 1 && project.slug === 'smoking-astana')) ? "h-full object-cover" : "h-auto",
-                                  className.includes('object-top') && "object-top"
-                                )}
-                            />
-                        </motion.div>
-                     )
-                  })}
-               </div>
-            ) : (
-               /* Standard Masonry Layout */
-               <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-                  {project.images.map((img, idx) => (
-                      <motion.div 
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="relative w-full break-inside-avoid rounded-lg overflow-hidden"
-                      >
-                          <Image
-                              src={img as string}
-                              alt={`${project.title} - ${idx + 1}`}
-                              width={800}
-                              height={1200}
-                              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
-                          />
-                      </motion.div>
-                  ))}
-               </div>
-            )
-          )}
 
       </section>
 
